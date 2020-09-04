@@ -1,26 +1,41 @@
-let MyTest = require ("../src/Password_Checker");
+let MyTest = require("../src/Password_Checker");
 
-let MyTest = MyTest.password_is_valid;
-let MyTest = MyTest.Password_is_Okay;
-let MyTest = MyTest.Password_is_neverOkay;
+let password_is_valid = MyTest.password_is_valid;
+let password_is_Okay = MyTest.password_is_Okay;
+let password_is_neverOkay = MyTest.password_is_neverOkay;
 
-describe("funtion password_is_valid" , function(){
-    it("should give results password checker" ,function(){
-        expect(results).toBe("password is valid!(@Anda2000)!")
-    });
-    
+describe("funtion password_is_valid", function () {
+  it("should return the valid password", function () {
+    expect(password_is_valid()).toEqual("@Anda2000");
+  });
 });
 
-describe("funtion Password_is_Okay" , function(){
-    it("should give results password checker" ,function(){
-        expect(results).toBe("PasswordIsOkay!(@Anda2000)!")
-    });
-    
+describe("funtion Password_is_Okay", function () {
+  it("should return the okay password", function () {
+    expect(password_is_Okay()).toEqual("@Anda2000)");
+  });
 });
 
-describe("funtion Password_is_neverOkay" , function(){
-    it("should give results password checker" ,function(){
-        expect(results).toBe("PasswordIsNeverOkay!(Anda2000)")
-    });
-    
+describe("funtion Password_is_neverOkay", function () {
+  it("should return the incorrect password", function () {
+    expect(password_is_neverOkay()).toEqual("Invalid password:  have atleast one special character Anda2000");
+  });
+});
+
+describe("Test all function", function () {
+  it("atleast have 8 characters", function () {
+    expect(Password.length()).toEqual(8);
+  });
+  it("should have one lower character", function () {
+    expect(Password.match()).toEqual(/[a-z]/g);
+  });
+  it("should have uppercase letters", function () {
+    expect(Password.match()).toEqual(/[A-Z]/g);
+  });
+  it("should have atleast one special character", function () {
+    expect(Password.match()).toEqual(/[{(!@#$%^&*.,\')}]/g);
+  });
+  it("should have have atleast one number", function () {
+    expect(Password.match()).toEqual(/[0-9]/g);
+  });
 });
